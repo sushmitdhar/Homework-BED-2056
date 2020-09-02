@@ -1,0 +1,36 @@
+---
+title: "Mandatory homework assignment submission"
+author: "Marius R. Larsson"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Figure 1
+
+```{r heart plot}
+data <- data.frame(t=seq(0, 2*pi, by=0.1) )
+xfun <- function(t) 16*sin(t)^3
+yfun <- function(t) 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+data$y <- yfun(data$t)
+data$x <- xfun(data$t)
+
+plot(data$x,data$y, type="l", col="red", lty=2, axes=F, ylab="", xlab="")
+
+
+```
+
+The plot shows a red heart.
+
+## Figure 2
+
+```{r, fig.height=2, fig.width=8}
+plot(rnorm(100, mean=0, sd=1), type='l', col="green", lwd=3, main="Is this normal?",
+     axes=F, ylab="", xlab="")
+```
+
+The plot shows 100 normally distributed N(0,1) random numbers

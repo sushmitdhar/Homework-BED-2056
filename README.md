@@ -25,3 +25,28 @@ github_account
 Nothing else. Just copy/paste the above line to the subject field without changing it.
 
 Do this as soon as possible. I have to grant you write permission to this repository.
+
+## Step 2
+ 
+After you've been invited to modify this repository, clone it as we did in class (or see lecture notes). Open the .R-project and then create a **new** Rmarkdown document (.Rmd) which you will place in the **submissions** folder. The name of the .Rmd document should be `git_submission_your_name.Rmd`. The .Rmd document should contain the following:
+
+```
+- Remove everything in the .Rmd-file **except** the setup chunk and YAML header.
+- Load the function found in the .R-file named "plotBED.R" using source() in your setup chunk. The file is located in the submission/R folder. The function is named plotBED() and will generate a simple line plot. The available arguments are "y" and "x" corresponding to the y and x axis in a plot. It works in the exact same way as plot(), but with a few moditifactions. Example usage can be found in the "plotBED.R"-file
+- Load the data file "dataBED.csv" using read.csv() in your setup chunk. The file is located in the submission/data folder. Assign it to a variable named "dframe", i.e. "dframe <- read.csv()". The data file contains guest nights at hotels in Troms county for the year 2018 where the column "date" is the month, and "guestNights2018" are the guest nights for their respective months.
+- Insert the picture found in the submission/picture folder using the markdown syntax ![](path/to/picture.png) outside of any code chunks. Insert the picture after your setup chunk.
+- Place the function plotBED() in its own chunk. Use the column "date" as the x-argument and the column "guestNights2018" as the y-argument, from the "dataBED.csv"-data to generate a plot output.
+- Create an approriate header above the plot and below the picture.
+- Under the plot, write a **dynamic** text where the output should be which month has the most amount of guest nights, and how many guest nights it is.
+- At the end, create a clean looking table using the kable() function presenting some, or all of the data.
+```
+
+When you're done with the .Rmd document, knit it as a .html. Imagine for a second your a data science journalist just having to load the latest data each month to have a new article to present to your boss. Convenient. Then commit and push both of your .Rmd and .html file to the repository. 
+
+*PS. There might be changes to the remote repository between your clone and push. As we discussed in class, you should do a pull before pushing your submission. If you try to push after remote has changed without pulling first, git will give you a warning. Don't worry, just read the warning and follow the instructions (this is perfectly normal and shold be expected when colaborating on projects using git). You will probably just have to pull -> commit with all the new files -> push.*
+
+See the EXAMPLE_git_submission.Rmd for an example. **This example contains example code for the mandatory homework assignment given two years ago. The assignment is different this year**
+
+Remember: your submission will be open for everyone to see. 
+
+-

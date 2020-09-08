@@ -16,19 +16,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r}
 dframe <- read.csv('data/dataBED.csv')
-head(dframe)
 ```
+
+## Visitor data
 ```{r}
 source('R/plotBED.R')
 plotBED(y=dframe$guestNights2018, x=dframe$date, ylab="Guest nights", xlab="Date")
 title("Guest nights at hotels in Troms county, 2018")
 ```
 
-```{r}
-maxStays <- max(dframe$guestNights2018)
-```
-
-The month with the highest guest nights was x with `r maxStays`.
+The month with the highest guest nights was `r format(as.Date(dframe[which.max(dframe$guestNights2018),1]), "%B")` with `r dframe[which.max(dframe$guestNights2018),2]` guest stays.
 
 ```{r}
 knitr::kable(dframe)

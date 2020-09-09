@@ -1,0 +1,54 @@
+---
+title: "Mandatory homework assignment submission"
+author: "Helle Sandsdalen"
+output: html_document
+html_document: 
+  df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("./R/plotBED.R")
+library(data.table)
+library(lubridate)
+library(kableExtra)
+Sys.setlocale("LC_TIME", "English")
+
+dframe <- read.csv("./data/dataBED.csv")
+```
+![Tromsø city by night](./picture/tromso_by_night.png)
+
+
+<h3> Figure 1 - Number of hotel nights in Tromsø through 2018 </h3>
+``` {r plot, out.width="100%"}
+date <- dframe[, "date"]
+GN <- dframe[, "guestNights2018"]
+plotBED(date,GN, xlab="Month", ylab="Number of guest nights")
+title(main="Guest nights in 2018")
+
+
+```
+```{R}
+
+max_stays <- max(dframe$guestNights2018)
+index <- which(dframe$guestNights2018 == max_stays)
+
+df_mostNights <- dframe[index, ]
+most_visit_date <- df_mostNights['date']
+convert_To_String <-  paste( unlist(most_visit_date), collapse='')
+month_variable <- months(as.Date.character(convert_To_String))
+
+
+```
+<b>The month with the most visitors in 2018 was `r month_variable` and it was `r df_mostNights['guestNights2018']` visitors this month. </b>
+
+
+<h3>Figure 2 - Data Table </h3>
+``` {R}
+dframe %>%
+  kbl(caption = "Guest nights at hotels in Tromsø in 2018") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+
+

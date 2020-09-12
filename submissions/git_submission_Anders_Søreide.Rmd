@@ -1,0 +1,28 @@
+---
+title: "git_submission_Anders_Søreide"
+author: "Anders Søreide"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+source("R/plotBED.R")
+dframe <- read.csv("data/dataBED.csv")
+```
+
+![](picture/tromso_by_night.png)
+## Guest nights by month
+```{r plotBED}
+plotBED(x = dframe$date, y = dframe$guestNights2018, xlab = "Month", ylab = "Number of guest nights")
+```
+
+In 2018, the month of `r format(as.Date(dframe[which.max(dframe$guestNights2018),1]), "%B")` had the most visitors, with `r dframe[which.max(dframe$guestNights2018),2]` Guest nights
+
+```{r kable}
+knitr::kable(dframe)
+```
+
+
+
